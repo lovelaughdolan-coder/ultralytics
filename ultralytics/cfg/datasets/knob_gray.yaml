@@ -1,0 +1,12 @@
+# YOLOv8/v11 训练配置文件 - knob 灰度数据集
+# 用于提高对不同颜色旋钮的泛化能力
+
+# 数据集路径
+path: /home/hxy/ultralytics/data/yolo/knob_gray
+train: images/train
+val: images/val
+test:  # 可选
+
+# 类别定义
+names:
+  0: knob

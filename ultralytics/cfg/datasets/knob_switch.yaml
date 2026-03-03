@@ -1,0 +1,12 @@
+# YOLOv8/v11 训练配置文件 - knob_switch 数据集（旋钮+开关）
+
+# 数据集路径
+path: /home/hxy/ultralytics/data/yolo/knob_switch
+train: images/train
+val: images/val
+test:  # 可选
+
+# 类别定义 (obj_id 1 -> 0: knob, obj_id 2 -> 1: switch)
+names:
+  0: knob
+  1: switch
