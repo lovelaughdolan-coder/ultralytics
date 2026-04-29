@@ -223,8 +223,7 @@ class YoloPoseRealtimeNode(Node):
             if key == ord('q'):
                 self.get_logger().info('用户按下 q，退出...')
                 self._shutdown_requested = True
-                rclpy.shutdown()
-                return
+                raise SystemExit
 
         if self._shutdown_requested:
             return
@@ -333,7 +332,7 @@ def main():
 
     try:
         rclpy.spin(node)
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, SystemExit):
         pass
     finally:
         total_time = time.time() - node.start_time
@@ -344,6 +343,8 @@ def main():
             node.get_logger().info(f'总计处理 {node.frame_count} 帧, 平均 FPS: {avg_fps:.1f}')
         except Exception:
             pass
+        if rclpy.ok():
+            rclpy.shutdown()
 
 
 if __name__ == '__main__':
